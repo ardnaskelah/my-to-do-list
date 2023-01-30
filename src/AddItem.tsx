@@ -17,10 +17,17 @@ const AddItem = ({addNewItem}:Props) => {
         setInputValue("")
     }
 
+    const onKeyDown = (event:any)=>{
+        if(event.key==="Enter"){
+            addNewItem(inputValue)
+        }
+        
+    }
+
 	return (
 		<>
-			<input value={inputValue} onChange={(event)=>onChange(event.target.value)} placeholder="Add new item" />
-			<button disabled={inputValue.length<1} onClick={onClick} type="button"> Add  </button>
+			<input value={inputValue} onKeyDown={onKeyDown}  onChange={(event)=>onChange(event.target.value)} placeholder="Add new item" />
+			<button disabled={inputValue.length<1}  onClick={onClick} type="button"> Add  </button>
 		</>
 	);
 };

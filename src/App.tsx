@@ -15,7 +15,7 @@ function App() {
 	//useState bedzie trzymal tablice stirngow
 
 	const addNewItem = (value: string) => {
-    const findItem = itemList.find((item)=> item.description === value)
+    const findItem = itemList.find((item)=> item.description.toLowerCase() === value.toLowerCase())
     
     if (findItem) {
       alert("Item is alredy in the list") } else {
