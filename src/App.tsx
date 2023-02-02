@@ -27,6 +27,16 @@ function App() {
 		setItemList(itemList.filter((item, filterIndex) => index !== filterIndex));
 	};
 
+	const onEdit = (index:number, newValue:string) => {
+		const newArray = itemList.map((item,currentIndex) => {
+			if (index !== currentIndex) {
+				return item
+			}
+			return {done: item.done, description: newValue}
+		})
+		setItemList(newArray)
+	}
+
 
 	return (
 		<div className="App">
@@ -39,8 +49,10 @@ function App() {
 						item={item}
 						key={index}
 						handleRemove={handleRemove}
+						onEdit={onEdit}
 					/>
 				))}
+				{itemList.length ===0 && "No items"}
 			</ol>
 		</div>
 	);
