@@ -1,5 +1,4 @@
 ﻿import { useState } from "react";
-import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { AddButton, ItemWrapper } from "./AddItem.styles";
 
@@ -11,18 +10,20 @@ const AddItem = ({ addNewItem }: Props) => {
 	const [inputValue, setInputValue] = useState<string>("");
 
 	const onChange = (value: string) => setInputValue(value);
-		
+
 	const onClick = () => {
 		addNewItem(inputValue);
 		setInputValue("");
 	};
 
-	const onKeyDown = (event: any) => {
-		if (event.key === "Enter" && event.target.value!==""){
-			addNewItem(inputValue);
-		} else {
-			alert("You can't add empty task!")
-	}};
+	const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+		if (event.key === "Enter" && inputValue) {
+			addNewItem(inputValue)
+			setInputValue("");
+		} else if (event.key === "Enter") {
+			alert("You can't add empty task!");
+		}
+	};
 
 	return (
 		<>
