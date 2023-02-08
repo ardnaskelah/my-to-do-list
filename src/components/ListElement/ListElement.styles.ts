@@ -1,9 +1,11 @@
-﻿import { ListItemText, styled } from "@mui/material";
+﻿import { ListItemText, styled, TextField } from "@mui/material";
 
 export const ListItemStyled = styled(ListItemText)`
-	span {
-		max-width: calc(100% - 20px);
+	.MuiTypography-root {
+		max-width: calc(100% - 30px);
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
 `;
+
+

@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import ListItem from "@mui/material/ListItem";
 import EditIcon from "@mui/icons-material/Edit";
+import { ListItemStyled } from "./ListElement.styles";
 
 interface Props {
 	item: ToDoItem;
@@ -58,12 +59,11 @@ const ListElement = ({ item, index, handleRemove, onEdit }: Props) => {
 					<Checkbox edge="start" disableRipple />
 				</ListItemIcon>
 
-				{!editMode && <ListItemText primary={item.description} />}
+				{!editMode && <ListItemStyled primary={item.description} />}
 				{editMode && (
 					<ListItemText>
 						<TextField
 							id="outlined"
-							label="Outlined"
 							variant="outlined"
 							className="text"
 							placeholder="text"

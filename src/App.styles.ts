@@ -21,8 +21,8 @@ export const StyledTypography = styled(Typography)`
 `;
 
 export const StyledList = styled(List)`
-	width: "400px";
+	width: 400px;
 	background-color: "background.paper";
-	max-height:600px;
+	max-height: 600px;
 	overflow-y: auto;
-	`
+`;
