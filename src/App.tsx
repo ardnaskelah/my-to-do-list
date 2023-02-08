@@ -43,6 +43,16 @@ function App() {
 		setItemList(newArray);
 	};
 
+	const onDoneChange = (index: number) => {
+		const newArray = itemList.map((item, currentIndex) => {
+			if (index !== currentIndex) {
+				return item;
+			}
+			return { ...item, done: !item.done };
+		});
+		setItemList(newArray);
+	};
+
 	return (
 		<AppWrapper>
 			<ListWrapper elevation={2}>
@@ -56,6 +66,7 @@ function App() {
 							key={index}
 							handleRemove={handleRemove}
 							onEdit={onEdit}
+							onDoneChange={onDoneChange}
 						/>
 					))}
 					{itemList.length === 0 && <Alert severity="info">No Items</Alert>}

@@ -16,9 +16,16 @@ interface Props {
 	handleRemove: (index: number) => void;
 	index: number;
 	onEdit: (index: number, input: string) => void;
+	onDoneChange: (index: number) => void;
 }
 
-const ListElement = ({ item, index, handleRemove, onEdit }: Props) => {
+const ListElement = ({
+	item,
+	index,
+	handleRemove,
+	onEdit,
+	onDoneChange,
+}: Props) => {
 	const [editMode, setEditMode] = useState<Boolean>(false);
 	const [editedItem, setEditedItem] = useState<string>("");
 
@@ -56,10 +63,17 @@ const ListElement = ({ item, index, handleRemove, onEdit }: Props) => {
 		>
 			<ListItemButton role={undefined} dense>
 				<ListItemIcon>
-					<Checkbox edge="start" disableRipple />
+					<Checkbox
+						onChange={() => onDoneChange(index)}
+						edge="start"
+						disableRipple
+					/>
 				</ListItemIcon>
 
-				{!editMode && <ListItemStyled primary={item.description} />}
+				{!editMode && (
+					<ListItemStyled done={item.done} primary={item.description} />
+				)}
+				{/* przez propsdone przekazuje  */}
 				{editMode && (
 					<ListItemText>
 						<TextField
