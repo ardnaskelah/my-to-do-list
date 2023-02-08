@@ -41,8 +41,7 @@ const AddItem = ({ addNewItem }: Props) => {
 					variant="contained"
 					size="small"
 				>
-					{" "}
-					Add{" "}
+					Add
 				</AddButton>
 			</ItemWrapper>
 		</>

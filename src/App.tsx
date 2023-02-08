@@ -1,11 +1,13 @@
 import { useState } from "react";
-import AddItem from "./AddItem";
-import TableItem from "./TableItem";
-import List from "@mui/material/List";
-import { AppWrapper, ListWrapper, StyledTypography } from "./App.styles";
-import Paper from "@mui/material/Paper";
-import Alert from '@mui/material/Alert';
-import Typography from '@mui/material/Typography';
+import AddItem from "./components/AddItem/AddItem";
+import ListElement from "./components/ListElement/ListElement";
+import {
+	AppWrapper,
+	ListWrapper,
+	StyledTypography,
+	StyledList,
+} from "./App.styles";
+import Alert from "@mui/material/Alert";
 
 export interface ToDoItem {
 	done: boolean;
@@ -14,7 +16,6 @@ export interface ToDoItem {
 
 function App() {
 	const [itemList, setItemList] = useState<ToDoItem[]>([]);
-	//useState bedzie trzymal tablice stirngow
 
 	const addNewItem = (value: string) => {
 		const findItem = itemList.find(
@@ -47,11 +48,9 @@ function App() {
 			<ListWrapper elevation={2}>
 				<StyledTypography variant="h4"> TO DO LIST </StyledTypography>
 				<AddItem addNewItem={addNewItem} />
-				<List
-					sx={{ width: "400px", bgcolor: "background.paper" }}
-				>
+				<StyledList>
 					{itemList.map((item, index) => (
-						<TableItem
+						<ListElement
 							index={index}
 							item={item}
 							key={index}
@@ -60,7 +59,7 @@ function App() {
 						/>
 					))}
 					{itemList.length === 0 && <Alert severity="info">No Items</Alert>}
-				</List>
+				</StyledList>
 			</ListWrapper>
 		</AppWrapper>
 	);
