@@ -11,17 +11,18 @@ const AddItem = ({ addNewItem }: Props) => {
 	const [inputValue, setInputValue] = useState<string>("");
 
 	const onChange = (value: string) => setInputValue(value);
-
+		
 	const onClick = () => {
 		addNewItem(inputValue);
 		setInputValue("");
 	};
 
 	const onKeyDown = (event: any) => {
-		if (event.key === "Enter") {
+		if (event.key === "Enter" && event.target.value!==""){
 			addNewItem(inputValue);
-		}
-	};
+		} else {
+			alert("You can't add empty task!")
+	}};
 
 	return (
 		<>
